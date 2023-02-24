@@ -5,45 +5,24 @@ def Is_Valid_Number(num: str) -> bool:
     except ValueError: 
         return False
 
-def Get_Non_Negative_Number(prompt: str) -> bool:
+def Get_Non_Negative_Number(prompt: str) -> float:
     while True:
-        if not Is_Valid_Number(prompt):
+        input_result = input(prompt)
+        if not Is_Valid_Number(input_result):
             print("Invalid character(s) detected.")
-            return False
-        elif float(prompt) < 0:
-            print("The value entered must be at least 0.")
-            return False
-        else:
-            return True
+            continue
+        return float(input_result)
 
 def Get_Hourly_Wage():
-    while True:
-        hourly_wage_input = input("Please enter your hourly wage: ") 
-        if not Get_Non_Negative_Number(hourly_wage_input):
-            continue
-        elif Get_Non_Negative_Number(hourly_wage_input):
-            hourly_wage = float(hourly_wage_input)
-            break
+    hourly_wage = Get_Non_Negative_Number("Please enter your hourly wage: ")
     return hourly_wage
 
 def Get_Regular_Hours():
-    while True:
-        regular_hours_input = input("Please enter your hourly wage: ") 
-        if not Get_Non_Negative_Number(regular_hours_input):
-            continue
-        elif Get_Non_Negative_Number(regular_hours_input):
-            regular_hours = float(regular_hours_input)
-            break
+    regular_hours = Get_Non_Negative_Number("Please enter your regular hours: ")
     return regular_hours
 
 def Get_Overtime_Hours():
-    while True:
-        overtime_hours_input = input("Please enter your hourly wage: ") 
-        if not Get_Non_Negative_Number(overtime_hours_input):
-            continue
-        elif Get_Non_Negative_Number(overtime_hours_input):
-            overtime_hours = float(overtime_hours_input)
-            break
+    overtime_hours = Get_Non_Negative_Number("Please enter your overtime hours: ")
     return overtime_hours
 
 hourly_wage = Get_Hourly_Wage()
