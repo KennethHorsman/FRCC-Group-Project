@@ -81,15 +81,15 @@ def get_net_income():
 
     if net_income < 11000:
         tax_rate = 0
-    elif net_income >= 11000 and net_income < 44725:
+    elif 11000 <= net_income < 44725:
         tax_rate = 0.12
-    elif net_income >= 44725 and net_income < 95375:
+    elif 44725 <= net_income < 95375:
         tax_rate = 0.22
-    elif net_income >= 95375 and net_income < 182100:
+    elif 95375 <= net_income < 182100:
         tax_rate = 0.24
-    elif net_income >= 182100 and net_income < 231250:
+    elif 182100 <= net_income < 231250:
         tax_rate = 0.32
-    elif net_income >= 231250 and net_income < 578125:
+    elif 231250 <= net_income < 578125:
         tax_rate = 0.37
     elif net_income >= 578125:
         tax_rate = 0.37
