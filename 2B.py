@@ -10,7 +10,7 @@ The program should prompt the user for the number of each type of video and outp
 """
 
 def get_non_negative_number(prompt: str) -> float:
-    "Tests if input is a valid number and greater than 0."
+    "Tests if input is a valid number and at least 0."
     while True:
         input_result = input(prompt)
         if not input_result.isdigit():

@@ -34,18 +34,18 @@ def get_non_negative_number(prompt: str) -> float:
 
 def get_hourly_wage():
     "Prompts user for hourly wage"
-    hourly = get_non_negative_number("Your Hourly Wage: ")
-    return hourly
+    hourly_wage_input = get_non_negative_number("Your Hourly Wage: ")
+    return hourly_wage_input
 
 def get_regular_hours():
     "Prompts user for regular hours"
-    regular = get_non_negative_number("Your Regular Hours: ")
-    return regular
+    regular_hours_input = get_non_negative_number("Your Regular Hours: ")
+    return regular_hours_input
 
 def get_overtime_hours():
     "Prompts user for overtime hours"
-    overtime = get_non_negative_number("Your Overtime Hours: ")
-    return overtime
+    overtime_hours_input = get_non_negative_number("Your Overtime Hours: ")
+    return overtime_hours_input
 
 hourly_wage = get_hourly_wage()
 regular_hours = get_regular_hours()

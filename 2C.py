@@ -6,17 +6,9 @@ Project 2C:
 Write a program that will compute a single filer's income tax.
 
 1. Significant constants:
-       tax rate -
-              37% for above $578,125 
-              35% for above $231,250 
-              32% for above $182,100
-              24% for above $95,375 
-              22% for above $44,725 
-              12% for above $11,000 
-       standard deduction -
-              $13,850 
+       tax rate
+       standard deduction
        deduction per dependent -
-              $2,000 for <=5 or $3,000 for 6-17 (not over 17)
 2. The inputs are:
        gross income 
        number of dependents 
