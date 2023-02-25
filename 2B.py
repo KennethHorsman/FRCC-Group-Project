@@ -10,7 +10,7 @@ The program should prompt the user for the number of each type of video and outp
 """
 
 def get_non_negative_number(prompt: str) -> float:
-    "Tests if input is a digit and at least 0, then returns input as float."
+    "Tests if input is a digit, then returns input as float."
     while True:
         input_result = input(prompt)
         if not input_result.isdigit():
@@ -42,7 +42,7 @@ def print_rental_cost(): # pylint: disable=useless-return
     rental_cost = ((3 * num_dvds) + (2 * num_vhs)) * (num_nights)
     rental_cost_formatted = f"{rental_cost:,.2f}"
 
-    if rental_cost == 0 or num_nights == 0:
+    if rental_cost == 0:
         print("\nNo video rentals are being made.")
     else:
         if num_vhs == 0:
