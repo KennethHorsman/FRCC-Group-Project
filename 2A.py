@@ -47,12 +47,17 @@ def get_overtime_hours():
     overtime_hours_input = get_non_negative_number("Your Overtime Hours: ")
     return overtime_hours_input
 
-hourly_wage = get_hourly_wage()
-regular_hours = get_regular_hours()
-overtime_hours = get_overtime_hours()
+def print_weekly_pay(): # pylint: disable=useless-return
+    "Calculates and prints weekly pay"
+    hourly_wage = get_hourly_wage()
+    regular_hours = get_regular_hours()
+    overtime_hours = get_overtime_hours()
 
-overtime_pay = (hourly_wage * 1.5) * overtime_hours
-weekly_pay = (hourly_wage * regular_hours) + overtime_pay
-weekly_pay_formatted = "{:,.2f}".format(weekly_pay) # pylint: disable=consider-using-f-string
+    overtime_pay = (hourly_wage * 1.5) * overtime_hours
+    weekly_pay = (hourly_wage * regular_hours) + overtime_pay
+    weekly_pay_formatted = f"{weekly_pay:,.2f}"
 
-print(f"\nTotal Weekly Pay: ${weekly_pay_formatted}")
+    print(f"\nTotal Weekly Pay: ${weekly_pay_formatted}")
+    return
+
+print_weekly_pay()
