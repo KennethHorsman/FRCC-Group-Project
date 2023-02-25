@@ -1,56 +1,56 @@
 """
 Project 2A:
 
-Write a program that takes as inputs the hourly wage, total regular hours, and total overtime hours and displays an employee's total weekly pay.
+Write a program that takes as inputs the hourly wage, total regular hours, 
+and total overtime hours and displays an employee's total weekly pay.
 
 Overtime pay equals the total overtime hours multiplied by 1.5 times the hourly wage.
-An employee's total weekly pay equals the hourly wage multiplied by the total number of regular hours plus any overtime pay. 
+An employee's total weekly pay equals the hourly wage multiplied by the total number 
+of regular hours plus any overtime pay. 
 """
 
-def is_valid_number(num): 
-    try: 
-        float(num) 
+
+def is_valid_number(num: str) -> bool:
+    "Determines if the num can successfully be converted to a float"
+    try:
+        float(num)
         return True
-    except ValueError: 
+    except ValueError:
         return False
 
-def Weekly_Pay():
+def get_non_negative_number(prompt: str) -> float:
+    "Tests if input is a valid number and greater than 0."
     while True:
-        hourly_wage = input("Please enter your hourly wage: ") 
-        if not is_valid_number(hourly_wage): 
-            print("Invalid character(s) detected.") 
-        elif float(hourly_wage) < 0:
-            print("Your hourly wage must be a positive number.")
-        else:
-            hourly_wage = float(hourly_wage)
-            break
+        input_result = input(prompt)
+        if not is_valid_number(input_result):
+            print("Invalid character(s) detected.")
+            continue
+        elif float(input_result) < 0:
+            prompt_message = prompt.lower().strip(": ")
+            print(f"The value of {prompt_message} must be at least 0.")
+            continue
+        return float(input_result)
 
-    while True:
-        total_regular_hours = input("Please enter your total regular hours: ")
-        if not is_valid_number(total_regular_hours): 
-            print("Invalid character(s) detected.") 
-        elif float(total_regular_hours) < 0:
-            print("Your total regular hours must be a positive number.")
-        else:
-            total_regular_hours = float(total_regular_hours)
-            break
+def get_hourly_wage():
+    "Prompts user for hourly wage"
+    hourly = get_non_negative_number("Your Hourly Wage: ")
+    return hourly
 
-    while True:
-        total_overtime_hours = input("Please enter your total overtime hours: ")
-        if not is_valid_number(total_overtime_hours): 
-            print("Invalid character(s) detected.") 
-        elif float(total_overtime_hours) < 0:
-            print("Your total overtime hours must be a positive number.")
-        else:
-            total_overtime_hours = float(total_overtime_hours)
-            break
+def get_regular_hours():
+    "Prompts user for regular hours"
+    regular = get_non_negative_number("Your Regular Hours: ")
+    return regular
 
-    overtime_pay = total_overtime_hours * (1.5 * hourly_wage)
-    total_weekly_pay = (hourly_wage * total_regular_hours) + overtime_pay
-    return total_weekly_pay
+def get_overtime_hours():
+    "Prompts user for overtime hours"
+    overtime = get_non_negative_number("Your Overtime Hours: ")
+    return overtime
 
-weekly_pay = Weekly_Pay()
-weekly_pay = "{:,.2f}".format(round(weekly_pay,2))
+hourly_wage = get_hourly_wage()
+regular_hours = get_regular_hours()
+overtime_hours = get_overtime_hours()
+
+weekly_pay_calculation = hourly_wage * (regular_hours + (1.5 * overtime_hours))
+weekly_pay = "{:,.2f}".format(weekly_pay_calculation) # pylint: disable=consider-using-f-string
 
 print(f"\nTotal Weekly Pay: ${weekly_pay}")
-input('')
