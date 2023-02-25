@@ -1,5 +1,7 @@
-""" Again, this generally looks good. I would split the Rental_Cost function up into get_num_dvds, get_num_vhs and use a similar flow to 2A. 
-Also, as a general rule any time you find yourself returning a tuple (multiple values) from a function it's a good sign that you need to break that function up. """
+""" Again, this generally looks good. I would split the Rental_Cost function up into get_num_dvds, 
+get_num_vhs and use a similar flow to 2A. 
+Also, as a general rule any time you find yourself returning a tuple (multiple values) from a function 
+it's a good sign that you need to break that function up. """
 
 def is_valid_number(num: str): 
     try: 

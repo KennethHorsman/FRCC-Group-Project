@@ -9,7 +9,6 @@ An employee's total weekly pay equals the hourly wage multiplied by the total nu
 of regular hours plus any overtime pay. 
 """
 
-
 def is_valid_number(num: str) -> bool:
     "Determines if the num can successfully be converted to a float"
     try:
@@ -25,7 +24,7 @@ def get_non_negative_number(prompt: str) -> float:
         if not is_valid_number(input_result):
             print("Invalid character(s) detected.")
             continue
-        elif float(input_result) < 0:
+        if float(input_result) < 0:
             prompt_message = prompt.lower().strip(": ")
             print(f"The value of {prompt_message} must be at least 0.")
             continue

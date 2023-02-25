@@ -1,10 +1,15 @@
 """
 Project 2B:
 
-Five Star Retro Video rents VHS tapes and DVDs to the same connoisseurs who like to buy LP record albums. The store rents new videos for $3.00 a night, 
-and oldies for $2.00 a night. Write a program that the clerks at Five Star Retro Video can use to calculate the total charge for a customer's video rentals. 
+Five Star Retro Video rents VHS tapes and DVDs to the same connoisseurs who like to buy LP record albums. 
+The store rents new videos for $3.00 a night, and oldies for $2.00 a night. Write a program that the clerks 
+at Five Star Retro Video can use to calculate the total charge for a customer's video rentals. 
 The program should prompt the user for the number of each type of video and output the total cost.
-"""
+
+Again, this generally looks good. I would split the Rental_Cost function up into get_num_dvds, 
+get_num_vhs and use a similar flow to 2A. 
+Also, as a general rule any time you find yourself returning a tuple (multiple values) from a function 
+it's a good sign that you need to break that function up. """
 
 def Rental_Cost():
     num_rentals = 0
