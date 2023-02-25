@@ -27,86 +27,80 @@ Write a program that will compute a single filer's income tax.
        the income tax, rounded to two decimals.
 """
 
-def is_valid_number(num): 
-    try: 
-        float(num) 
+def is_valid_number(num: str) -> bool:
+    "Determines if the num can successfully be converted to a float"
+
+    try:
+        float(num)
         return True
-    except ValueError: 
+    except ValueError:
         return False
 
-def Income_Tax_Inputs():
-       while True:
-              gross_income = input("Please enter your gross income: ")
-              gross_income = gross_income.replace(",", "")
-              if not is_valid_number(gross_income):
-                     print("Invalid character(s) detected.")
-                     continue
-              elif float(gross_income) < 0:
-                     print("Your gross income must be a positive number.")
-                     continue
-              else:
-                     gross_income = float(gross_income)
-                     break
+def get_non_negative_number(prompt: str) -> float:
+    "Tests if input is a valid number and greater than 0."
 
-       while True:
-              num_dependants = input("Please enter your number of dependants: ")
-              if not num_dependants.isdigit():
-                     print("Invalid character(s) detected.")
-              elif int(num_dependants) < 0:
-                     print("Your number of dependants must be a positive number.")
-              else:
-                     num_dependants = int(num_dependants)
-                     dependants_over_6 = 0
-                     dependants_under_6 = 0
-                     if num_dependants > 0: 
-                            for x in range(num_dependants):
-                                   while True:
-                                          dependant_age = input(f"Is dependant {x+1} at least 6 years old? Enter 'YES' or 'NO': ")
-                                          if dependant_age == "YES":
-                                                 dependants_over_6 += 1
-                                                 break
-                                          elif dependant_age == "NO":
-                                                 dependants_under_6 += 1
-                                                 break
-                                          else:
-                                                 print("Invalid character(s) detected.")
-                     else:
-                            dependants_over_6 = 0
-                            dependants_under_6 = 0
-                     break
-       return gross_income, num_dependants, dependants_over_6, dependants_under_6     
+    while True:
+        input_result = input(prompt)
+        if not is_valid_number(input_result):
+            print("Invalid character(s) detected.")
+            continue
+        if float(input_result) < 0:
+            prompt_message = prompt.lower().strip(": ")
+            print(f"The value of {prompt_message} must be at least 0.")
+            continue
+        return float(input_result)
 
-gross_income, num_dependants, dependants_over_6, dependants_under_6 = Income_Tax_Inputs()         
+def get_gross_income():
+    "Prompts user for their gross income"
 
-def Income_Tax_Calculations():
-       if num_dependants > 0:
-              dependant_deduction = (2000 * dependants_under_6) + (3000 * dependants_over_6)
-       else:
-              dependant_deduction = 0
+    gross_income_input = get_non_negative_number("Your Gross Income: ")
+    return gross_income_input
 
-       standard_deduction = 13850
-       net_income = gross_income - standard_deduction - dependant_deduction
-       if net_income > 11000:
-              tax_rate = 0.12
-              if net_income > 44725:
-                     tax_rate = 0.22
-                     if net_income > 95375:
-                            tax_rate = 0.24
-                            if net_income > 182100:
-                                   tax_rate = 0.32
-                                   if net_income > 231250:
-                                          tax_rate = 0.35
-                                          if net_income > 578125:
-                                                 tax_rate = 0.37
-       else:
-              tax_rate = 0
+def get_dependants_over_6():
+    "Prompts user for the number of their dependants over 6 years old"
 
-       income_tax = tax_rate * net_income
-       return income_tax, net_income
+    dependants_over_6_input = get_non_negative_number("Number of Dependants Over 6 Years Old: ")
+    return dependants_over_6_input
 
-income_tax, net_income = Income_Tax_Calculations()
-net_income = "{:,.2f}".format(net_income)
-income_tax = "{:,.2f}".format(income_tax)
+def get_dependants_under_6():
+    "Prompts user for the number of their dependants under 6 years old"
 
-print(f"\nYour Net Income: ${net_income}\nYour Income Tax: ${income_tax}")
-input('')
+    dependants_under_6_input = get_non_negative_number("Number of Dependants Under 6 Years Old: ")
+    return dependants_under_6_input
+
+gross_income = get_gross_income()
+dependants_over_6 = get_dependants_over_6()
+dependants_under_6 = get_dependants_under_6()
+
+def get_net_income():
+    "Calculates the net income from gross income, dependants over/under 6, and standard deduction"
+
+    STANDARD_DEDUCTION = 13850
+    dependant_deduction = (2000 * dependants_under_6) + (3000 * dependants_over_6)
+    net_income = gross_income - dependant_deduction - STANDARD_DEDUCTION
+
+    if net_income < 11000:
+        tax_rate = 0
+    elif net_income >= 11000 and net_income < 44725:
+        tax_rate = 0.12
+    elif net_income >= 44725 and net_income < 95375:
+        tax_rate = 0.22
+    elif net_income >= 95375 and net_income < 182100:
+        tax_rate = 0.24
+    elif net_income >= 182100 and net_income < 231250:
+        tax_rate = 0.32
+    elif net_income >= 231250 and net_income < 578125:
+        tax_rate = 0.37
+    elif net_income >= 578125:
+        tax_rate = 0.37
+
+    income_tax_result = int(net_income * tax_rate)
+    # I had to add int() here because it would return -0.00 with certain values???
+
+    return income_tax_result
+
+income_tax = get_net_income()
+
+income_tax_formatted = "{:,.2f}".format(income_tax) # pylint: disable=consider-using-f-string
+
+print(f"Your Income Tax: ${income_tax_formatted}")
