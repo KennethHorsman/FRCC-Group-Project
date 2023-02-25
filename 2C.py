@@ -89,4 +89,4 @@ income_tax = get_net_income()
 
 income_tax_formatted = "{:,.2f}".format(income_tax) # pylint: disable=consider-using-f-string
 
-print(f"Your Income Tax: ${income_tax_formatted}")
+print(f"\nYour Income Tax: ${income_tax_formatted}")

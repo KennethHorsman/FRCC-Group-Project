@@ -45,7 +45,7 @@ rental_cost = ((3 * num_dvds) + (2 * num_vhs)) * (num_nights)
 rental_cost_formatted = "{:,.2f}".format(rental_cost) # pylint: disable=consider-using-f-string
 
 if rental_cost == 0 or num_nights == 0:
-    print("No video rentals are being made.")
+    print("\nNo video rentals are being made.")
 else: # Completely unecessary but I felt like doing it anyways
     if num_nights == 1:
         if num_dvds > 1 and num_vhs == 0:
