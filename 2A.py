@@ -12,7 +12,7 @@ of regular hours plus any overtime pay.
 """
 
 def is_valid_number(num: str) -> bool:
-    "Determines if the num can successfully be converted to a float"
+    "Determines if num can successfully be converted to a float"
     try:
         float(num)
         return True
@@ -20,7 +20,7 @@ def is_valid_number(num: str) -> bool:
         return False
 
 def get_non_negative_number(prompt: str) -> float:
-    "Tests if input is a valid number and greater than 0."
+    "Tests if input is a valid number and greater than 0, then returns input as float."
     while True:
         input_result = input(prompt)
         if not is_valid_number(input_result):
@@ -49,7 +49,7 @@ def get_overtime_hours():
     overtime_hours_input = get_non_negative_number("Your Overtime Hours: ")
     return overtime_hours_input
 
-def print_weekly_pay(): # pylint: disable=useless-return
+def print_weekly_pay():
     "Calculates and prints weekly pay"
     hourly_wage = get_hourly_wage()
     regular_hours = get_regular_hours()
@@ -59,7 +59,6 @@ def print_weekly_pay(): # pylint: disable=useless-return
     weekly_pay = (hourly_wage * regular_hours) + overtime_pay
     weekly_pay_formatted = f"{weekly_pay:,.2f}"
 
-    print(f"\nTotal Weekly Pay: ${weekly_pay_formatted}")
-    return
+    return print(f"\nTotal Weekly Pay: ${weekly_pay_formatted}")
 
 print_weekly_pay()

@@ -20,7 +20,7 @@ Write a program that will compute a single filer's income tax.
 """
 
 def is_valid_number(num: str) -> bool:
-    "Determines if the num can successfully be converted to a float"
+    "Determines if num can successfully be converted to a float"
     try:
         float(num)
         return True
@@ -28,7 +28,7 @@ def is_valid_number(num: str) -> bool:
         return False
 
 def get_non_negative_number(prompt: str) -> float:
-    "Tests if input is a valid number and greater than 0."
+    "Tests if input is a valid number and greater than 0, then returns input as float."
     while True:
         user_input = input(prompt)
         if prompt == "Your Gross Income: ":
@@ -73,7 +73,7 @@ def get_net_income():
 
     return net_income_calculation
 
-def print_income_tax(): # pylint: disable=useless-return
+def print_income_tax():
     "Calculates and prints the income tax"
     net_income = get_net_income()
 
@@ -95,7 +95,6 @@ def print_income_tax(): # pylint: disable=useless-return
     income_tax_calculation = abs(net_income * tax_rate)
     income_tax_formatted = f"{income_tax_calculation:,.2f}"
 
-    print(f"\nYour Income Tax: ${income_tax_formatted}")
-    return
+    return print(f"\nYour Income Tax: ${income_tax_formatted}")
 
 print_income_tax()
