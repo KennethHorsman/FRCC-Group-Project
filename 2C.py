@@ -76,7 +76,7 @@ def get_net_income():
     "Calculates the net income from gross income, dependants over/under 6, and standard deduction"
 
     STANDARD_DEDUCTION = 13850
-    dependant_deduction = (2000 * dependants_under_6) + (3000 * dependants_over_6)
+    dependant_deduction = (3000 * dependants_over_6) + (2000 * dependants_under_6)
     net_income = gross_income - dependant_deduction - STANDARD_DEDUCTION
 
     if net_income < 11000:
