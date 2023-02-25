@@ -30,7 +30,11 @@ def is_valid_number(num: str) -> bool:
 def get_non_negative_number(prompt: str) -> float:
     "Tests if input is a valid number and greater than 0."
     while True:
-        input_result = input(prompt)
+        user_input = input(prompt)
+        if prompt == "Your Gross Income: ":
+            input_result = user_input.replace(",", "")
+        else:
+            input_result = user_input
         if not is_valid_number(input_result):
             print("Invalid character(s) detected.")
             continue
