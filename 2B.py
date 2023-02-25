@@ -24,48 +24,48 @@ def get_non_negative_number(prompt: str) -> float:
 
 def get_dvd_quantity():
     "Prompts user for number of DVDs being rented"
-    dvd_quantity = get_non_negative_number("Number of DVDs:")
-    return dvd_quantity
+    dvd_input = get_non_negative_number("Number of DVDs:")
+    return dvd_input
 
 def get_vhs_quantity():
     "Prompts user for number of VHS tapes being rented"
-    vhs_quantity = get_non_negative_number("Number of VHS Tapes:")
-    return vhs_quantity
+    vhs_input = get_non_negative_number("Number of VHS Tapes:")
+    return vhs_input
 
 def get_number_of_nights():
     "Prompts user for number of rental nights"
-    num_nights = get_non_negative_number("Number of Nights:")
-    return num_nights
+    nights_input = get_non_negative_number("Number of Nights:")
+    return nights_input
 
-dvds = get_dvd_quantity()
-vhs_tapes = get_vhs_quantity()
-nights = get_number_of_nights()
+num_dvds = get_dvd_quantity()
+num_vhs = get_vhs_quantity()
+num_nights = get_number_of_nights()
 
-rental_cost_calculation = ((3 * dvds) + (2 * vhs_tapes)) * (nights)
+rental_cost_calculation = ((3 * num_dvds) + (2 * num_vhs)) * (num_nights)
 rental_cost = "{:,.2f}".format(rental_cost_calculation) # pylint: disable=consider-using-f-string
 
-if rental_cost == 0 or nights == 0:
+if rental_cost == 0 or num_nights == 0:
     print("No video rentals are being made.")
-else:
-    if nights == 1:
-        if dvds > 1 and vhs_tapes == 0:
-            print(f"\nThe total cost of {dvds} DVDs for 1 night is ${rental_cost}")
-        elif dvds == 1 and vhs_tapes == 0:
+else: # Completely unecessary but I felt like doing it anyways
+    if num_nights == 1:
+        if num_dvds > 1 and num_vhs == 0:
+            print(f"\nThe total cost of {num_dvds} DVDs for 1 night is ${rental_cost}")
+        elif num_dvds == 1 and num_vhs == 0:
             print(f"\nThe total cost of 1 DVD for 1 night is ${rental_cost}")
-        elif vhs_tapes > 1 and dvds == 0:
-            print(f"\nThe total cost of {vhs_tapes} VHS tapes for 1 night is ${rental_cost}")
-        elif vhs_tapes == 1 and dvds == 0:
+        elif num_vhs > 1 and num_dvds == 0:
+            print(f"\nThe total cost of {num_vhs} VHS tapes for 1 night is ${rental_cost}")
+        elif num_vhs == 1 and num_dvds == 0:
             print(f"\nThe total cost of 1 VHS tape for 1 night is ${rental_cost}")
         else:
-            print(f"\nThe total cost of {dvds} DVDs and {vhs_tapes} VHS tapes for 1 night is: ${rental_cost}")
+            print(f"\nThe total cost of {num_dvds} DVDs and {num_vhs} VHS tapes for 1 night is: ${rental_cost}")
     else:
-        if dvds > 1 and vhs_tapes == 0:
-            print(f"\nThe total cost of {dvds} DVDs for {nights} nights is ${rental_cost}")
-        elif dvds == 1 and vhs_tapes == 0:
-            print(f"\nThe total cost of 1 DVD for {nights} nights is ${rental_cost}")
-        elif vhs_tapes > 1 and dvds == 0:
-            print(f"\nThe total cost of {vhs_tapes} VHS tapes for {nights} nights is ${rental_cost}")
-        elif vhs_tapes == 1 and dvds == 0:
-            print(f"\nThe total cost of 1 VHS tape for {nights} nights is ${rental_cost}")
+        if num_dvds > 1 and num_vhs == 0:
+            print(f"\nThe total cost of {num_dvds} DVDs for {num_nights} nights is ${rental_cost}")
+        elif num_dvds == 1 and num_vhs == 0:
+            print(f"\nThe total cost of 1 DVD for {num_nights} nights is ${rental_cost}")
+        elif num_vhs > 1 and num_dvds == 0:
+            print(f"\nThe total cost of {num_vhs} VHS tapes for {num_nights} nights is ${rental_cost}")
+        elif num_vhs == 1 and num_dvds == 0:
+            print(f"\nThe total cost of 1 VHS tape for {num_nights} nights is ${rental_cost}")
         else:
-            print(f"\nThe total cost of {dvds} DVDs and {vhs_tapes} VHS tapes for {nights} nights is: ${rental_cost}")
+            print(f"\nThe total cost of {num_dvds} DVDs and {num_vhs} VHS tapes for {num_nights} nights is: ${rental_cost}")
