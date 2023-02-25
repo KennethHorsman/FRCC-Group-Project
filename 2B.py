@@ -16,10 +16,6 @@ def get_non_negative_number(prompt: str) -> float:
         if not input_result.isdigit():
             print("Invalid character(s) detected.")
             continue
-        if float(input_result) < 0:
-            prompt_message = prompt.lower().strip(": ")
-            print(f"The {prompt_message} must be at least 0.")
-            continue
         return int(input_result)
 
 def get_dvd_quantity():

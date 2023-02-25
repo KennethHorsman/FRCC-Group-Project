@@ -27,8 +27,10 @@ def get_non_negative_number(prompt: str) -> float:
             print("Invalid character(s) detected.")
             continue
         if float(input_result) < 0:
-            prompt_message = prompt.lower().strip(": ")
-            print(f"The value of {prompt_message} must be at least 0.")
+            first_letter_prompt = prompt[0]
+            lowered_prompt = prompt.lower().strip(": ")
+            error_description = first_letter_prompt + lowered_prompt[1:]
+            print(f"Error: {error_description} must be a non-negative number.")
             continue
         return float(input_result)
 
