@@ -88,7 +88,7 @@ def print_income_tax():
     elif 182100 <= net_income < 231250:
         tax_rate = 0.32
     elif 231250 <= net_income < 578125:
-        tax_rate = 0.37
+        tax_rate = 0.35
     elif net_income >= 578125:
         tax_rate = 0.37
 
