@@ -21,7 +21,6 @@ Write a program that will compute a single filer's income tax.
 
 def is_valid_number(num: str) -> bool:
     "Determines if the num can successfully be converted to a float"
-
     try:
         float(num)
         return True
@@ -30,7 +29,6 @@ def is_valid_number(num: str) -> bool:
 
 def get_non_negative_number(prompt: str) -> float:
     "Tests if input is a valid number and greater than 0."
-
     while True:
         input_result = input(prompt)
         if not is_valid_number(input_result):
@@ -44,19 +42,16 @@ def get_non_negative_number(prompt: str) -> float:
 
 def get_gross_income():
     "Prompts user for their gross income"
-
     gross_income_input = get_non_negative_number("Your Gross Income: ")
     return gross_income_input
 
 def get_dependants_over_6():
     "Prompts user for the number of their dependants over 6 years old"
-
     dependants_over_6_input = get_non_negative_number("Number of Dependants Over 6 Years Old: ")
     return dependants_over_6_input
 
 def get_dependants_under_6():
     "Prompts user for the number of their dependants under 6 years old"
-
     dependants_under_6_input = get_non_negative_number("Number of Dependants Under 6 Years Old: ")
     return dependants_under_6_input
 
@@ -66,7 +61,6 @@ dependants_under_6 = get_dependants_under_6()
 
 def get_net_income():
     "Calculates the net income from gross income, dependants over/under 6, and standard deduction"
-
     STANDARD_DEDUCTION = 13850
     dependant_deduction = (3000 * dependants_over_6) + (2000 * dependants_under_6)
     net_income = gross_income - dependant_deduction - STANDARD_DEDUCTION
