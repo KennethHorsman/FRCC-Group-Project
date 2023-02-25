@@ -51,7 +51,9 @@ hourly_wage = get_hourly_wage()
 regular_hours = get_regular_hours()
 overtime_hours = get_overtime_hours()
 
-weekly_pay = hourly_wage * (regular_hours + (1.5 * overtime_hours))
+overtime_wage = hourly_wage * 1.5
+overtime_pay = overtime_wage * overtime_hours
+weekly_pay = (hourly_wage * regular_hours) + overtime_pay
 weekly_pay_formatted = "{:,.2f}".format(weekly_pay) # pylint: disable=consider-using-f-string
 
 print(f"\nTotal Weekly Pay: ${weekly_pay_formatted}")
