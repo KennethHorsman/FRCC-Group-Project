@@ -8,7 +8,7 @@ Write a program that will compute a single filer's income tax.
 1. Significant constants:
        tax rate
        standard deduction
-       deduction per dependent -
+       deduction per dependent
 2. The inputs are:
        gross income 
        number of dependents 
@@ -80,10 +80,10 @@ def get_net_income():
     elif net_income >= 578125:
         tax_rate = 0.37
 
-    income_tax_result = int(net_income * tax_rate)
+    income_tax_calculation = int(net_income * tax_rate)
     # I had to add int() here because it would return -0.00 with certain values???
 
-    return income_tax_result
+    return income_tax_calculation
 
 income_tax = get_net_income()
 
