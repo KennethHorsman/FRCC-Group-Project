@@ -1,3 +1,5 @@
+# pylint: disable=line-too-long
+# pylint: disable=invalid-name
 """
 Project 2A:
 

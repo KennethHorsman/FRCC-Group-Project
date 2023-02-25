@@ -1,69 +1,83 @@
-"""
-Project 2B:
-
-Five Star Retro Video rents VHS tapes and DVDs to the same connoisseurs who like to buy LP record albums. 
-The store rents new videos for $3.00 a night, and oldies for $2.00 a night. Write a program that the clerks 
-at Five Star Retro Video can use to calculate the total charge for a customer's video rentals. 
-The program should prompt the user for the number of each type of video and output the total cost.
-"""
-
-def is_digit(num: str) -> bool:
-    "Determines if the num can successfully be converted to a float"
-    try:
-        num.isdigit()
+def is_valid_number(num): 
+    try: 
+        float(num) 
         return True
-    except ValueError:
+    except ValueError: 
         return False
 
-def get_non_negative_number(prompt: str) -> float:
-    "Tests if input is a valid number and greater than 0."
-    while True:
-        input_result = input(prompt)
-        if not is_digit(input_result):
-            print("Invalid character(s) detected.")
-            continue
-        if float(input_result) < 0:
-            prompt_message = prompt.lower().strip(": ")
-            print(f"The value of {prompt_message} must be at least 0.")
-            continue
-        return float(input_result)
+def Income_Tax_Inputs():
+       while True:
+              gross_income = input("Please enter your gross income: ")
+              gross_income = gross_income.replace(",", "")
+              if not is_valid_number(gross_income):
+                     print("Invalid character(s) detected.")
+                     continue
+              elif float(gross_income) < 0:
+                     print("Your gross income must be a positive number.")
+                     continue
+              else:
+                     gross_income = float(gross_income)
+                     break
 
-def get_dvd_quantity():
-    "Prompts user for number of DVDs being rented"
-    dvd_quantity = get_non_negative_number("Number of DVDs:")
-    return dvd_quantity
+       while True:
+              num_dependants = input("Please enter your number of dependants: ")
+              if not num_dependants.isdigit():
+                     print("Invalid character(s) detected.")
+              elif int(num_dependants) < 0:
+                     print("Your number of dependants must be a positive number.")
+              else:
+                     num_dependants = int(num_dependants)
+                     dependants_over_6 = 0
+                     dependants_under_6 = 0
+                     if num_dependants > 0: 
+                            for x in range(num_dependants):
+                                   while True:
+                                          dependant_age = input(f"Is dependant {x+1} at least 6 years old? Enter 'YES' or 'NO': ")
+                                          if dependant_age == "YES":
+                                                 dependants_over_6 += 1
+                                                 break
+                                          elif dependant_age == "NO":
+                                                 dependants_under_6 += 1
+                                                 break
+                                          else:
+                                                 print("Invalid character(s) detected.")
+                     else:
+                            dependants_over_6 = 0
+                            dependants_under_6 = 0
+                     break
+       return gross_income, num_dependants, dependants_over_6, dependants_under_6     
 
-def get_vhs_quantity():
-    "Prompts user for number of VHS tapes being rented"
-    vhs_quantity = get_non_negative_number("Number of VHS Tapes:")
-    return vhs_quantity
+gross_income, num_dependants, dependants_over_6, dependants_under_6 = Income_Tax_Inputs()         
 
-def get_number_of_nights():
-    "Prompts user for number of rental nights"
-    num_nights = get_non_negative_number("Number of Nights:")
-    return num_nights
+def Income_Tax_Calculations():
+       if num_dependants > 0:
+              dependant_deduction = (2000 * dependants_under_6) + (3000 * dependants_over_6)
+       else:
+              dependant_deduction = 0
 
-dvds = get_dvd_quantity()
-vhs_tapes = get_vhs_quantity()
-nights = get_number_of_nights()
+       standard_deduction = 13850
+       net_income = gross_income - standard_deduction - dependant_deduction
+       if net_income > 11000:
+              tax_rate = 0.12
+              if net_income > 44725:
+                     tax_rate = 0.22
+                     if net_income > 95375:
+                            tax_rate = 0.24
+                            if net_income > 182100:
+                                   tax_rate = 0.32
+                                   if net_income > 231250:
+                                          tax_rate = 0.35
+                                          if net_income > 578125:
+                                                 tax_rate = 0.37
+       else:
+              tax_rate = 0
 
-rental_cost_calculation = ((3 * dvds) + (2 * vhs_tapes)) * (nights)
-rental_cost = "{:,.2f}".format(rental_cost_calculation) # pylint: disable=consider-using-f-string
+       income_tax = tax_rate * net_income
+       return income_tax, net_income
 
-if rental_cost == 0:
-    print("No video rentals are being made.")
-else:
-    if nights == 1:
-        if dvds > 0 and vhs_tapes == 0:
-            print(f"\nThe total cost of {dvds} dvds videos for 1 night is ${rental_cost}")
-        elif vhs_tapes > 0 and dvds == 0:
-            print(f"\nThe total cost of {vhs_tapes} vhs_tapes videos for 1 night is ${rental_cost}")
-        else:
-            print(f"\nThe total cost of {dvds} dvds videos and {vhs_tapes} vhs_tapes videos for 1 night is: ${rental_cost}")
-    else:
-        if dvds > 0 and vhs_tapes == 0:
-            print(f"\nThe total cost of {dvds} dvds videos for {nights} nights is ${rental_cost}")
-        elif vhs_tapes > 0 and dvds == 0:
-            print(f"\nThe total cost of {vhs_tapes} vhs_tapes videos for {nights} nights is ${rental_cost}")
-        else:
-            print(f"\nThe total cost of {dvds} dvds videos and {vhs_tapes} vhs_tapes videos for {nights} nights is: ${rental_cost}")
+income_tax, net_income = Income_Tax_Calculations()
+net_income = "{:,.2f}".format(net_income)
+income_tax = "{:,.2f}".format(income_tax)
+
+print(f"\nYour Net Income: ${net_income}\nYour Income Tax: ${income_tax}")
+input('')
