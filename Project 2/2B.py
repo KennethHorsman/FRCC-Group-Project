@@ -9,6 +9,14 @@ at Five Star Retro Video can use to calculate the total charge for a customer's 
 The program should prompt the user for the number of each type of video and output the total cost.
 """
 
+def pluralize(singular: str, count: float):
+    "If the rental quantity is over 1, pluralizes rental description"
+    if count == 1:
+        pluralize_result = singular
+    else:
+        pluralize_result = f"{singular}s"
+    return pluralize_result
+
 def get_non_negative_number(prompt: str) -> float:
     "Tests if input is a digit, then returns input as float."
     while True:
@@ -20,17 +28,17 @@ def get_non_negative_number(prompt: str) -> float:
 
 def get_dvd_quantity():
     "Prompts user for number of DVDs being rented"
-    dvd_input = get_non_negative_number("Number of DVDs:")
+    dvd_input = get_non_negative_number(prompt="Number of DVDs:")
     return dvd_input
 
 def get_vhs_quantity():
     "Prompts user for number of VHS tapes being rented"
-    vhs_input = get_non_negative_number("Number of VHS Tapes:")
+    vhs_input = get_non_negative_number(prompt="Number of VHS Tapes:")
     return vhs_input
 
 def get_number_of_nights():
     "Prompts user for number of rental nights"
-    nights_input = get_non_negative_number("Number of Nights:")
+    nights_input = get_non_negative_number(prompt="Number of Nights:")
     return nights_input
 
 def print_rental_cost(): # pylint: disable=useless-return
@@ -46,11 +54,18 @@ def print_rental_cost(): # pylint: disable=useless-return
         print("\nNo video rentals are being made.")
     else:
         if num_vhs == 0:
-            print(f"The total cost of {num_dvds} DVD{'s' if num_dvds > 1 else ''} for {num_nights} night{'s' if num_nights > 1 else ''} is: ${rental_cost_formatted}")
+            dvd_pluralized = pluralize("DVD", num_dvds)
+            nights_pluralized = pluralize("night", num_nights)
+            print(f"The total cost of {num_dvds} {dvd_pluralized} for {num_nights} {nights_pluralized} is: ${rental_cost_formatted}")
         elif num_dvds == 0:
-            print(f"The total cost of {num_vhs} VHS tape{'s' if num_vhs > 1 else ''} for {num_nights} night{'s' if num_nights > 1 else ''} is: ${rental_cost_formatted}")
+            vhs_pluralized = pluralize("VHS tape", num_vhs)
+            nights_pluralized = pluralize("night", num_nights)
+            print(f"The total cost of {num_vhs} {vhs_pluralized} for {num_nights} {nights_pluralized} is: ${rental_cost_formatted}")
         else:
-            print(f"The total cost of {num_dvds} DVD{'s' if num_dvds > 1 else ''} and {num_vhs} VHS tape{'s' if num_vhs > 1 else ''} for {num_nights} night{'s' if num_nights > 1 else ''} is: ${rental_cost_formatted}")
+            dvd_pluralized = pluralize("DVD", num_dvds)
+            vhs_pluralized = pluralize("VHS tape", num_vhs)
+            nights_pluralized = pluralize("night", num_nights)
+            print(f"The total cost of {num_dvds} {dvd_pluralized} and {num_vhs} {vhs_pluralized} for {num_nights} {nights_pluralized} is: ${rental_cost_formatted}")
     return
 
 print_rental_cost()
