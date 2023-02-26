@@ -55,17 +55,17 @@ def print_rental_cost(): # pylint: disable=useless-return
     else:
         if num_vhs == 0:
             dvd_pluralized = pluralize("DVD", num_dvds)
-            nights_pluralized = pluralize("night", num_nights)
-            print(f"The total cost of {num_dvds} {dvd_pluralized} for {num_nights} {nights_pluralized} is: ${rental_cost_formatted}")
+            night_pluralized = pluralize("night", num_nights)
+            print(f"The total cost of {num_dvds} {dvd_pluralized} for {num_nights} {night_pluralized} is: ${rental_cost_formatted}")
         elif num_dvds == 0:
             vhs_pluralized = pluralize("VHS tape", num_vhs)
-            nights_pluralized = pluralize("night", num_nights)
-            print(f"The total cost of {num_vhs} {vhs_pluralized} for {num_nights} {nights_pluralized} is: ${rental_cost_formatted}")
+            night_pluralized = pluralize("night", num_nights)
+            print(f"The total cost of {num_vhs} {vhs_pluralized} for {num_nights} {night_pluralized} is: ${rental_cost_formatted}")
         else:
             dvd_pluralized = pluralize("DVD", num_dvds)
             vhs_pluralized = pluralize("VHS tape", num_vhs)
-            nights_pluralized = pluralize("night", num_nights)
-            print(f"The total cost of {num_dvds} {dvd_pluralized} and {num_vhs} {vhs_pluralized} for {num_nights} {nights_pluralized} is: ${rental_cost_formatted}")
+            night_pluralized = pluralize("night", num_nights)
+            print(f"The total cost of {num_dvds} {dvd_pluralized} and {num_vhs} {vhs_pluralized} for {num_nights} {night_pluralized} is: ${rental_cost_formatted}")
     return
 
 print_rental_cost()
