@@ -14,7 +14,7 @@ def get_non_negative_number(prompt: str) -> float:
     while True:
         input_result = input(prompt)
         if not input_result.isdigit():
-            print("Invalid character(s) detected.")
+            print("Error: Invalid character(s) detected.")
             continue
         return int(input_result)
 

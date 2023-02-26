@@ -27,7 +27,7 @@ def is_valid_number(num: str) -> bool:
     except ValueError:
         return False
 
-def get_non_negative_number(prompt: str) -> float:
+def get_non_negative_number(prompt: str, description: str) -> float:
     "Tests if input is a valid number and greater than 0, then returns input as float."
     while True:
         user_input = input(prompt)
@@ -36,29 +36,27 @@ def get_non_negative_number(prompt: str) -> float:
         else:
             input_result = user_input
         if not is_valid_number(input_result):
-            print("Invalid character(s) detected.")
+            print("Error: Invalid character(s) detected.")
             continue
         if float(input_result) < 0:
-            first_letter_prompt = prompt[0]
-            lowered_prompt = prompt.lower().strip(": ")
-            error_description = first_letter_prompt + lowered_prompt[1:]
+            error_description = description
             print(f"Error: {error_description} must be a non-negative number.")
             continue
         return float(input_result)
 
 def get_gross_income():
     "Prompts user for their gross income"
-    gross_income_input = get_non_negative_number("Your Gross Income: ")
+    gross_income_input = get_non_negative_number(prompt="Your Gross Income: ", description="Your gross income")
     return gross_income_input
 
 def get_dependants_over_6():
     "Prompts user for the number of their dependants over 6 years old"
-    dependants_over_6_input = get_non_negative_number("Your Number of Dependants Over 6 Years Old: ")
+    dependants_over_6_input = get_non_negative_number(prompt="Your Number of Dependants Over 6 Years Old: ", description="Your number of dependants over 6 years old")
     return dependants_over_6_input
 
 def get_dependants_under_6():
     "Prompts user for the number of their dependants under 6 years old"
-    dependants_under_6_input = get_non_negative_number("Your Number of Dependants Under 6 Years Old: ")
+    dependants_under_6_input = get_non_negative_number(prompt="Your Number of Dependants Under 6 Years Old: ", description="Your number of dependants under 6 years old")
     return dependants_under_6_input
 
 def get_net_income():

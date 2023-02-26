@@ -19,34 +19,32 @@ def is_valid_number(num: str) -> bool:
     except ValueError:
         return False
 
-def get_non_negative_number(prompt: str) -> float:
+def get_non_negative_number(prompt: str, description: str) -> float:
     "Tests if input is a valid number and greater than 0, then returns input as float."
     while True:
         input_result = input(prompt)
         if not is_valid_number(input_result):
-            print("Invalid character(s) detected.")
+            print("Error: Invalid character(s) detected.")
             continue
         if float(input_result) < 0:
-            first_letter_prompt = prompt[0]
-            lowered_prompt = prompt.lower().strip(": ")
-            error_description = first_letter_prompt + lowered_prompt[1:]
+            error_description = description
             print(f"Error: {error_description} must be a non-negative number.")
             continue
         return float(input_result)
 
 def get_hourly_wage():
     "Prompts user for hourly wage"
-    hourly_wage_input = get_non_negative_number("Your Hourly Wage: ")
+    hourly_wage_input = get_non_negative_number(prompt="Your Hourly Wage: ", description="Your hourly wage")
     return hourly_wage_input
 
 def get_regular_hours():
     "Prompts user for regular hours"
-    regular_hours_input = get_non_negative_number("Your Regular Hours: ")
+    regular_hours_input = get_non_negative_number(prompt="Your Regular Hours: ", description="Your regular hours")
     return regular_hours_input
 
 def get_overtime_hours():
     "Prompts user for overtime hours"
-    overtime_hours_input = get_non_negative_number("Your Overtime Hours: ")
+    overtime_hours_input = get_non_negative_number(prompt="Your Overtime Hours: ", description="Your overtime hours")
     return overtime_hours_input
 
 def print_weekly_pay():
