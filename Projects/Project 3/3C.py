@@ -67,11 +67,12 @@ def ask_to_play_again() -> bool:
 def display_total(total):
     "Displays total amount of money won or lost"
     if total > 0:
-        return print(f"You won a total of: ${total}!")
+        return print(f"You won a total of: ${total:,.2f}!")
     if total == 0:
         return print("You did not win or lose any money!")
     if total < 0:
-        return print(f"You lost a total of ${abs(total)}!")
+        abs_total = abs(total)
+        return print(f"You lost a total of ${abs_total:,.2f}!")
 
 def slot_machine():
     "Simulates a slot machine"
@@ -82,7 +83,7 @@ def slot_machine():
         money_inserted = get_user_money()
         print(f"| {image_1} | {image_2} | {image_3} |")
         if image_1 == image_2 == image_3:
-            amount_won = 2 * money_inserted
+            amount_won = 3 * money_inserted
             amount_won_to_integer = int(amount_won) if amount_won.is_integer() else amount_won
             print(f"You've won ${amount_won_to_integer}!")
             total_money_won += amount_won
