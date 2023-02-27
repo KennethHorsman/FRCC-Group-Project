@@ -30,7 +30,7 @@ def get_non_negative_number(prompt: str) -> int:
 
 def generate_random_number():
     "Generates a random number between 0 and 9"
-    generated_number = random.randint(0,9)
+    generated_number = random.randint(0,10)
     return generated_number
 
 def get_users_guess():
