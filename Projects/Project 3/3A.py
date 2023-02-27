@@ -7,7 +7,7 @@ Your program should ask the user for number of feet and then outputs the convert
 In your program, make a function named "feet_to_inches" that accepts number of feet as an argument and 
 returns the number of inches in that many feet (ex: 2 feet should return 24 inches). 
 
-Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez, Destinee.
+Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez-Morales, Destinee.
 
 Course: CSC1019-FBN 
 """

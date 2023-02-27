@@ -5,7 +5,7 @@ Project 2C:
 
 Write a program that will compute a single filer's income tax.
 
-Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez, Destinee.
+Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez-Morales, Destinee.
 
 Course: CSC1019-FBN 
 """

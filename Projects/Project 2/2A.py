@@ -6,7 +6,7 @@ Project 2A
 Write a program that takes as inputs the hourly wage, total regular hours, 
 and total overtime hours and displays an employee's total weekly pay.
 
-Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez, Destinee.
+Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez-Morales, Destinee.
 
 Course: CSC1019-FBN 
 """

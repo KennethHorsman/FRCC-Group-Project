@@ -9,7 +9,7 @@ indicate whether it was too high or too low. The game is over when the user corr
 the number. When the game ends, the program should display the number of guesses the user made. 
 Break your program into functions where appropriate.
 
-Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez, Destinee.
+Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez-Morales, Destinee.
 
 Course: CSC1019-FBN 
 """
