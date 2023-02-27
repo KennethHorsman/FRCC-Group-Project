@@ -1,14 +1,14 @@
 # pylint: disable=line-too-long
 # pylint: disable=invalid-name
 """
-Project 2A:
+Project 2A
 
 Write a program that takes as inputs the hourly wage, total regular hours, 
 and total overtime hours and displays an employee's total weekly pay.
 
-Overtime pay equals the total overtime hours multiplied by 1.5 times the hourly wage.
-An employee's total weekly pay equals the hourly wage multiplied by the total number 
-of regular hours plus any overtime pay. 
+Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez, Destinee.
+
+Course: CSC1019-FBN 
 """
 
 def is_valid_number(num: str) -> bool:
