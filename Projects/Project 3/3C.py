@@ -67,7 +67,7 @@ def ask_to_play_again() -> bool:
 def display_total(total):
     "Displays total amount of money won or lost"
     if total > 0:
-        return print(f"You won a total of: ${total:,.2f}!")
+        return print(f"You gained a total of: ${total:,.2f}!")
     if total == 0:
         return print("You did not win or lose any money!")
     if total < 0:
