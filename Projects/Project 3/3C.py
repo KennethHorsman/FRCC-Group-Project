@@ -90,8 +90,7 @@ def slot_machine():
             total_money_lost += money_inserted
             if ask_to_play_again() is False:
                 total = total_money_won - total_money_lost
-                total_to_integer = int(total) if total.is_integer() else total
-                display_total(total_to_integer)
+                display_total(total)
                 break
         elif image_1 == image_2 or image_1 == image_3 or image_2 == image_3:
             amount_won = 2 * money_inserted
@@ -101,16 +100,14 @@ def slot_machine():
             total_money_lost += money_inserted
             if ask_to_play_again() is False:
                 total = total_money_won - total_money_lost
-                total_to_integer = int(total) if total.is_integer() else total
-                display_total(total_to_integer)
+                display_total(total)
                 break
         else:
             print("Oh no! You didn't win anything that time.")
             total_money_lost += money_inserted
             if ask_to_play_again() is False:
                 total = total_money_won - total_money_lost
-                total_to_integer = int(total) if total.is_integer() else total
-                display_total(total_to_integer)
+                display_total(total)
                 break
     return None
 
