@@ -20,26 +20,21 @@ def is_valid_number(num: str) -> bool:
     except ValueError:
         return False
 
-def get_non_negative_number(prompt: str, description: str) -> float:
+def get_non_negative_number(prompt: str) -> float:
     "Tests if input is a valid number and greater than 0, then returns input as float."
     while True:
         user_input = input(prompt)
-        if prompt == "Your Gross Income: ":
-            input_result = user_input.replace(",", "")
-        else:
-            input_result = user_input
-        if not is_valid_number(input_result):
+        if not is_valid_number(user_input):
             print("Error: Invalid character(s) detected.")
             continue
-        if float(input_result) < 0:
-            error_description = description
-            print(f"Error: {error_description} must be a non-negative number.")
+        if float(user_input) < 0:
+            print("Error: The number of feet must be a non-negative number.")
             continue
-        return float(input_result)
+        return float(user_input)
 
 def get_number_feet():
     "Prompts user to input number of feet"
-    number_feet_input = get_non_negative_number(prompt="Enter the total number of feet: ", description="The number of feet")
+    number_feet_input = get_non_negative_number("Enter the total number of feet: ")
     return number_feet_input
 
 def convert_feet_to_inches():
