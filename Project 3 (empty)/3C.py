@@ -12,4 +12,8 @@ If two words match, the program will inform the user that he or she has won two 
 If three words match, the program will inform the user that they've won three times the amount entered.
 The program will ask whether the user wants to play again. If so, the steps are repeated. 
 If not, the program displays the total amount of money entered into the slot machine and the total amount won.
+
+Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez, Destinee.
+
+Course: CSC1019-FBN 
 """
