@@ -13,7 +13,7 @@ Course: CSC1019-FBN
 
 def pluralize(singular: str, count: float):
     "If the rental quantity is over 1, pluralizes rental description"
-    if count == 1: 
+    if count == 1:
         pluralize_result = singular # if the 'count' parameter is equal to 1, it sets the result of this function as the 'singular' parameter
     else:
         pluralize_result = f"{singular}s" # if the count parameter is anything else (count of 0 is okay because of lines 55, 61, and 63), sets result as 'singualr' parameter with an s at the end
@@ -23,7 +23,7 @@ def get_non_negative_number(prompt: str) -> int:
     "Tests if input is a digit, then returns input as an integer."
     while True:
         input_result = input(prompt)
-        if not input_result.isdigit(): # this function simply repeats the loop until the input given can be considered a digit - which a positive, whole number
+        if not input_result.isdigit(): # this function simply repeats the loop until the input given can be considered a digit - which is a positive, whole number
             print("Error: Invalid character(s) detected.")
             continue
         return int(input_result) # converts result to an int - float is unecessary because you can't have 1.5 DVDs
@@ -59,11 +59,11 @@ def print_rental_cost(): # pylint: disable=useless-return   # I have the pylint 
         vhs_pluralized = pluralize("VHS tape", num_vhs)
         night_pluralized = pluralize("night", num_nights)
         if num_vhs == 0: # custom print line so that it doesn't say "x DVDs and 0 VHS tapes...", it only mentions DVDs.
-            print(f"The total cost of {num_dvds} {dvd_pluralized} for {num_nights} {night_pluralized} is: ${rental_cost_formatted}")
+            print(f"\nThe total cost of {num_dvds} {dvd_pluralized} for {num_nights} {night_pluralized} is: ${rental_cost_formatted}")
         elif num_dvds == 0:
-            print(f"The total cost of {num_vhs} {vhs_pluralized} for {num_nights} {night_pluralized} is: ${rental_cost_formatted}")
+            print(f"\nThe total cost of {num_vhs} {vhs_pluralized} for {num_nights} {night_pluralized} is: ${rental_cost_formatted}")
         else: # last option: customer is renting both DVDs and VHS tapes
-            print(f"The total cost of {num_dvds} {dvd_pluralized} and {num_vhs} {vhs_pluralized} for {num_nights} {night_pluralized} is: ${rental_cost_formatted}")
+            print(f"\nThe total cost of {num_dvds} {dvd_pluralized} and {num_vhs} {vhs_pluralized} for {num_nights} {night_pluralized} is: ${rental_cost_formatted}")
     return
 
 print_rental_cost()
