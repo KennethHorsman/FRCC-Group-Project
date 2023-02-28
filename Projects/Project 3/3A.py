@@ -39,11 +39,9 @@ def get_number_feet():
 
 def convert_feet_to_inches():
     "Calculates how many inches are in the number of feet"
-    number_feet = get_number_feet()
+    feet = get_number_feet()
 
-    inches_calculation = number_feet * 12
-    inches_to_integer = int(inches_calculation) if inches_calculation.is_integer() else inches_calculation
-    number_feet_to_integer = int(number_feet) if number_feet.is_integer() else number_feet
-    return print(f"{number_feet_to_integer} feet is equivalent to {inches_to_integer} inches.")
+    inches = feet * 12
+    return print(f"{int(feet) if feet.is_integer() else feet} feet is equivalent to {int(inches) if inches.is_integer() else inches} inches.")
 
 convert_feet_to_inches()
