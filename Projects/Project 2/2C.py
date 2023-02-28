@@ -23,7 +23,7 @@ def get_non_negative_number(prompt: str, description: str) -> float: # sets prom
     while True: # creates a loop that requires a condition to be fulfilled in order to stop
         user_input = input(prompt) # prompts user for input using the prompt parameter
         if prompt == "Your Gross Income: ": # tests for this specific prompt
-            input_result = user_input.replace(",", "").replace(".", "") # if it is, then replace any potential commas or decimals with nothing so those don't trigger the function on line 29
+            input_result = user_input.replace(",", "").replace(".", "").replace("$","") # if it is, then replace any potential commas or decimals with nothing so those don't trigger the function on line 29
         else:
             input_result = user_input # if it's not that specific prompt, nothing changes except I've assigned user_input to a new variable since I don't want to redefine user_input on line 26
         if not is_valid_number(input_result): # takes input_result from above and uses it as the paramter for the function above this one, and asks if it returned false
