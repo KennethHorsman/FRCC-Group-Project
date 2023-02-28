@@ -31,8 +31,8 @@ def is_valid_number(num: str) -> bool:
 def get_non_negative_number(prompt: str) -> float:
     "Tests if input is a valid number and greater than 0, then returns input as float."
     while True:
-        user_input = input(prompt).replace("$","")
-        if not is_valid_number(user_input.replace(",","").replace(".","")):
+        user_input = input(prompt).replace("$","").replace(",","")
+        if not is_valid_number(user_input.replace(".","")):
             print("Error: Invalid character(s) detected.")
             continue
         if float(user_input) < 0:
@@ -77,7 +77,6 @@ def slot_machine():
     "Simulates a slot machine"
     total_money_won = 0
     total_money_lost = 0
-    total = total_money_won - total_money_lost
     while True:
         image_1, image_2, image_3 = get_random_images()
         money_inserted = get_user_money()
@@ -96,6 +95,7 @@ def slot_machine():
             print(f"You've won ${int(amount_won) if amount_won.is_integer() else amount_won}!")
             total_money_won += amount_won
             total_money_lost += money_inserted
+            total = total_money_won - total_money_lost
             if ask_to_play_again() is False:
                 display_total(total)
                 break
@@ -104,12 +104,14 @@ def slot_machine():
             print(f"You've won ${int(amount_won) if amount_won.is_integer() else amount_won}!")
             total_money_won += amount_won
             total_money_lost += money_inserted
+            total = total_money_won - total_money_lost
             if ask_to_play_again() is False:
                 display_total(total)
                 break
         else:
             print("Oh no! You didn't win anything that time.")
             total_money_lost += money_inserted
+            total = total_money_won - total_money_lost
             if ask_to_play_again() is False:
                 display_total(total)
                 break
