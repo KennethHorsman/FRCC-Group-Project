@@ -33,7 +33,7 @@ def get_non_negative_number(prompt: str) -> float:
     "Tests if input is a valid number and greater than 0, then returns input as float."
     while True:
         user_input = input(prompt)
-        if not is_valid_number(user_input):
+        if not is_valid_number(user_input.replace(".","")):
             print("Error: Invalid character(s) detected.")
             continue
         if float(user_input) < 0:
@@ -81,7 +81,14 @@ def slot_machine():
     while True:
         image_1, image_2, image_3 = get_random_images()
         money_inserted = get_user_money()
+        total_length = len(image_1)+len(image_2)+len(image_3)+10
+        for i in range(0, total_length): # pylint: disable=unused-variable
+            print("-", end="")
+        print("")
         print(f"| {image_1} | {image_2} | {image_3} |")
+        for i in range(0, total_length):
+            print("-", end="")
+        print("")
         if image_1 == image_2 == image_3:
             amount_won = 3 * money_inserted
             amount_won_to_integer = int(amount_won) if amount_won.is_integer() else amount_won
@@ -111,4 +118,6 @@ def slot_machine():
                 break
     return None
 
+print("Welcome to the slot machine.")
 slot_machine()
+print("Thanks for playing. Come again!")
