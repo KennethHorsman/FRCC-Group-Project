@@ -22,7 +22,7 @@ Course: CSC1019-FBN
 import random
 
 def main():
-    "slot machine redefined to main program??"
+    "allows file to run as a script but not as a module?"
 
     def is_valid_number(num: str) -> bool:
         "Determines if num can successfully be converted to a float"
@@ -74,7 +74,7 @@ def main():
             print(f"You gained a total of: ${total:,.2f}!")
             return
         if total == 0:
-            print("You did not win or lose any money!")
+            print("You did not gain or lose any money!")
             return
         if total < 0:
             abs_total = abs(total)
@@ -108,22 +108,18 @@ def main():
             if num_matches == 3:
                 amount_won = 3 * money_inserted
                 print(f"You've won ${amount_won:,.2f}!")
-                total_money_won += amount_won
-                total_money_lost += money_inserted
-                total = total_money_won - total_money_lost
             elif num_matches == 2:
                 amount_won = 2 * money_inserted
                 print(f"You've won ${amount_won:,.2f}!")
-                total_money_won += amount_won
-                total_money_lost += money_inserted
-                total = total_money_won - total_money_lost
             else:
+                amount_won = 0
                 print("Oh no! You didn't win anything that time.")
-                total_money_lost += money_inserted
-                total = total_money_won - total_money_lost
 
             if ask_to_play_again() is False:
                 roll_slot_machine = False
+                total_money_won += amount_won
+                total_money_lost += money_inserted
+                total = total_money_won - total_money_lost
                 display_total(total)
                 return
 
