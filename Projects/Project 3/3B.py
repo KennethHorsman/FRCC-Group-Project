@@ -16,7 +16,7 @@ Course: CSC1019-FBN
 
 import random
 
-def get_non_negative_number(prompt: str) -> int:
+def get_digit_in_range(prompt: str) -> int:
     "Tests if input is a valid number and greater than 0, then returns input as float."
     while True:
         user_input = input(prompt)
@@ -35,7 +35,7 @@ def generate_random_number():
 
 def get_users_guess():
     "Prompts user to guess a number"
-    user_guess_input = get_non_negative_number("Guess a number between 0 and 9: ")
+    user_guess_input = get_digit_in_range("Guess a number between 0 and 9: ")
     return user_guess_input
 
 def guess_random_number():
@@ -59,14 +59,16 @@ def guess_random_number():
 def ask_to_play_again():
     "Prompts user to enter whether they would like to play again"
     while True:
-        play_again = input("Would you like to play again? Enter 'YES' or 'NO': ")
-        if play_again == "YES":
-            guess_random_number()
-        elif play_again == "NO":
-            break
-        else:
-            print("Error: Invalid character(s) detected.")
-    return None
+        play_again_input = input("Would you like to play again? Enter 'YES' or 'NO': ")
+        if play_again_input == "YES":
+            return True
+        if play_again_input == "NO":
+            return False
+        print("Error: Invalid character(s) detected.")
 
-guess_random_number()
-ask_to_play_again()
+print("Welcome to the number guessing game!")
+play_again = True
+while play_again is True:
+    guess_random_number()
+    play_again = ask_to_play_again()
+print("Thanks for playing!")
