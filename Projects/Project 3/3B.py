@@ -16,33 +16,21 @@ Course: CSC1019-FBN
 
 import random
 
-def get_digit_in_range(prompt: str) -> int:
-    "Tests if input is a valid number and greater than 0, then returns input as float."
-    while True:
-        user_input = input(prompt)
-        if not user_input.isdigit():
-            print("Error: Invalid character(s) detected.")
-            continue
-        if float(user_input) > 9:
-            print("Error: Your guess is out of bounds.")
-            continue
-        return int(user_input)
-
-def generate_random_number():
-    "Generates a random number between 0 and 9"
-    generated_number = random.randint(0,10)
-    return generated_number
-
-def get_users_guess():
-    "Prompts user to guess a number"
-    user_guess_input = get_digit_in_range("Guess a number between 0 and 9: ")
-    return user_guess_input
+def main():
+    "Simulates a number guessing game"
+    print("Welcome to the number guessing game!")
+    play_again = True
+    while play_again is True:
+        guess_random_number()
+        play_again = ask_to_play_again()
+    print("Thanks for playing!")
 
 def guess_random_number():
     "Determines if users guess was correct"
     random_number = generate_random_number()
     count = 1
-    while True:
+    keep_guessing = True
+    while keep_guessing is True:
         user_guess = get_users_guess()
         if user_guess > random_number:
             print("That number is too high.")
@@ -51,24 +39,46 @@ def guess_random_number():
             print("That number is too low.")
             count += 1
         else:
+            keep_guessing = False
             print("That's correct!")
             print(f"Number of guesses: {count}")
-            break
-    return None
+            return
+
+def generate_random_number():
+    "Generates a random number between 0 and 9"
+    generated_number = random.randint(0,9)
+    return generated_number
+
+def get_users_guess():
+    "Prompts user to guess a number"
+    user_guess_input = get_digit_in_range("Guess a number between 0 and 9: ")
+    return user_guess_input
+
+def get_digit_in_range(prompt: str) -> int:
+    "Tests if input is a valid number and greater than 0, then returns input as float."
+    test_number = True
+    while test_number is True:
+        user_input = input(prompt)
+        if not user_input.isdigit():
+            print("Error: Invalid character(s) detected.")
+        elif float(user_input) > 9:
+            print("Error: Your guess is out of bounds.")
+        else:
+            test_number = False
+            return int(user_input)
 
 def ask_to_play_again():
     "Prompts user to enter whether they would like to play again"
-    while True:
+    ask_user = True
+    while ask_user is True:
         play_again_input = input("Would you like to play again? Enter 'YES' or 'NO': ")
         if play_again_input == "YES":
+            ask_user = False
             return True
         if play_again_input == "NO":
+            ask_user = False
             return False
         print("Error: Invalid character(s) detected.")
 
-print("Welcome to the number guessing game!")
-play_again = True
-while play_again is True:
-    guess_random_number()
-    play_again = ask_to_play_again()
-print("Thanks for playing!")
+if __name__=="__main__":
+    main()

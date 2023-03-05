@@ -12,6 +12,34 @@ Programmer: Horsman, Kenneth. Group Members: Nowak, Stephen. Jimenez-Morales, De
 Course: CSC1019-FBN 
 """
 
+def main():
+    "Tells user how many inches are in the number of feet"
+    convert_feet_to_inches()
+
+def convert_feet_to_inches():
+    "Calculates feet to inches"
+    feet = get_number_feet()
+    inches = feet * 12
+    return print(f"{int(feet) if feet.is_integer() else feet} feet is equivalent to {int(inches) if inches.is_integer() else inches} inches.")
+
+def get_number_feet():
+    "Prompts user to input number of feet"
+    number_feet_input = get_non_negative_number("Enter the total number of feet: ")
+    return number_feet_input
+
+def get_non_negative_number(prompt: str) -> float:
+    "Tests if input is a valid number and greater than 0, then returns input as float."
+    test_number = True
+    while test_number is True:
+        user_input = input(prompt)
+        if not is_valid_number(user_input):
+            print("Error: Invalid character(s) detected.")
+        elif float(user_input) < 0:
+            print("Error: The number of feet must be a non-negative number.")
+        else:
+            test_number = False
+            return float(user_input)
+
 def is_valid_number(num: str) -> bool:
     "Determines if num can successfully be converted to a float"
     try:
@@ -20,28 +48,5 @@ def is_valid_number(num: str) -> bool:
     except ValueError:
         return False
 
-def get_non_negative_number(prompt: str) -> float:
-    "Tests if input is a valid number and greater than 0, then returns input as float."
-    while True:
-        user_input = input(prompt)
-        if not is_valid_number(user_input):
-            print("Error: Invalid character(s) detected.")
-            continue
-        if float(user_input) < 0:
-            print("Error: The number of feet must be a non-negative number.")
-            continue
-        return float(user_input)
-
-def get_number_feet():
-    "Prompts user to input number of feet"
-    number_feet_input = get_non_negative_number("Enter the total number of feet: ")
-    return number_feet_input
-
-def convert_feet_to_inches():
-    "Calculates how many inches are in the number of feet"
-    feet = get_number_feet()
-
-    inches = feet * 12
-    return print(f"{int(feet) if feet.is_integer() else feet} feet is equivalent to {int(inches) if inches.is_integer() else inches} inches.")
-
-convert_feet_to_inches()
+if __name__=="__main__":
+    main()
