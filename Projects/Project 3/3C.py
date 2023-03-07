@@ -84,13 +84,14 @@ def get_non_negative_number(prompt: str) -> float:
     "Tests if input is a valid number and greater than 0, then returns input as float."
     test_number = True
     while test_number is True:
-        user_input = input(prompt).replace("$","").replace(",","")
+        user_input = input(prompt).strip("$").replace(",","")
         if not is_valid_number(user_input):
             print("Error: Invalid character(s) detected.")
-        elif float(user_input) < 0:
+            continue
+        if float(user_input) < 0:
             print("Error: The amount of money inserted must be a non-negative number.")
-        else:
-            test_number = False
+            continue
+        test_number = False
         return float(user_input)
 
 def is_valid_number(num: str) -> bool:
@@ -103,14 +104,11 @@ def is_valid_number(num: str) -> bool:
 
 def ask_to_play_again() -> bool:
     "Prompts user to enter if they'd like to play again"
-    ask_user = True
-    while ask_user is True:
+    while True:
         play_again = input("Would you like to play again? Enter 'YES or 'NO': ")
         if play_again == "YES":
-            ask_user = False
             return True
         if play_again == "NO":
-            ask_user = False
             return False
         print("Error: Invalid character(s) detected.")
 
