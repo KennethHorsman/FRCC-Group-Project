@@ -61,10 +61,11 @@ def slot_machine():
             amount_won = 0
             print("Oh no! You didn't win anything that time.")
 
+        total_money_won += amount_won
+        total_money_lost += money_inserted
+
         if ask_to_play_again() is False:
             roll_slot_machine = False
-            total_money_won += amount_won
-            total_money_lost += money_inserted
             total = total_money_won - total_money_lost
             display_total(total)
             return
