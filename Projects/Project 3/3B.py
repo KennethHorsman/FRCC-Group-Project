@@ -55,7 +55,7 @@ def get_users_guess():
     return user_guess_input
 
 def get_digit_in_range(prompt: str) -> int:
-    "Tests if input is a valid number and greater than 0, then returns input as float."
+    "Tests if input is a valid number and greater than 0, then returns input as an integer."
     test_number = True
     while test_number is True:
         user_input = input(prompt)

@@ -37,15 +37,15 @@ def slot_machine():
         images = get_random_images()
         money_inserted = get_user_money()
 
-        total_length = sum(len(x) for x in images)+10
-        print("-" * total_length)
-        print(f"| {images[0]} | {images[1]} | {images[2]} |")
+        total_length = sum(len(x) for x in images)+10 # Calculates the total length of line 42
+        print("-" * total_length) # Prints the number of dashes that will perfectly cover line 42
+        print(f"| {images[0]} | {images[1]} | {images[2]} |") # Prints each image that was randomly generated in 3 separated boxes
         print("-" * total_length)
 
-        image_dict = {} # creates an empty dictionary
-        for x in images: # loops through each item in list images
+        image_dict = {} # Creates an empty dictionary
+        for x in images: # Loops through each item in list images
             image_dict[x] = image_dict.get(x,0)+1 # Creates key in dict as x, assigns value as 0 if not already in dict, and ad1ds 1 for that occurance of the key
-        num_matches = max(image_dict.values()) # finds the highest value in the dict
+        num_matches = max(image_dict.values()) # Finds the highest value in the dict, which is the number of matches (occurances) of the key
 
         if num_matches == 3:
             amount_won = 3 * money_inserted
@@ -61,9 +61,9 @@ def slot_machine():
         total_money_lost += money_inserted
         grand_total = total_money_won - total_money_lost
 
-        if ask_to_play_again() is False:
-            roll_slot_machine = False
-            display_total(grand_total)
+        if ask_to_play_again() is False: # Performs the ask_to_play function, and only if it returns False does the while loop end up breaking on line 67
+            roll_slot_machine = False # Completely useless line of code but indicates that roll_slot_machine has stopped
+            display_total(grand_total) # Uses the calculated grand total as the parameter in the display_total function
             return
 
 def get_random_images():
@@ -100,7 +100,8 @@ def is_valid_number(num: str) -> bool:
 
 def ask_to_play_again() -> bool:
     "Prompts user to enter if they'd like to play again"
-    while True:
+    play_again = None
+    while False != play_again != True:
         play_again = input("Would you like to play again? Enter 'YES or 'NO': ")
         if play_again == "YES":
             return True
