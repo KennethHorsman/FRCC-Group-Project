@@ -62,7 +62,7 @@ def slot_machine():
         grand_total = total_money_won - total_money_lost
 
         if ask_to_play_again() is False: # Performs the ask_to_play function, and only if it returns False does the while loop end up breaking on line 67
-            roll_slot_machine = False # Completely useless line of code but indicates that roll_slot_machine has stopped
+            roll_slot_machine = False # Completely useless line of code but it's helpful to indicate that roll_slot_machine has stopped
             display_total(grand_total) # Uses the calculated grand total as the parameter in the display_total function
             return
 
