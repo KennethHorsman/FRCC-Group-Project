@@ -38,17 +38,13 @@ def slot_machine():
         money_inserted = get_user_money()
 
         total_length = sum(len(x) for x in images)+10
-        for i in range(0, total_length): # pylint: disable=unused-variable
-            print("-", end="")
-        print("")
+        print("-" * total_length)
         print(f"| {images[0]} | {images[1]} | {images[2]} |")
-        for i in range(0, total_length):
-            print("-", end="")
-        print("")
+        print("-" * total_length)
 
         image_dict = {} # creates an empty dictionary
         for x in images: # loops through each item in list images
-            image_dict[x] = image_dict.get(x,0)+1 # Creates key in dict as x, assigns value as 0 if not already in dict, and adds 1 for that occurance of the key
+            image_dict[x] = image_dict.get(x,0)+1 # Creates key in dict as x, assigns value as 0 if not already in dict, and ad1ds 1 for that occurance of the key
         num_matches = max(image_dict.values()) # finds the highest value in the dict
 
         if num_matches == 3:
@@ -63,11 +59,11 @@ def slot_machine():
 
         total_money_won += amount_won
         total_money_lost += money_inserted
+        grand_total = total_money_won - total_money_lost
 
         if ask_to_play_again() is False:
             roll_slot_machine = False
-            total = total_money_won - total_money_lost
-            display_total(total)
+            display_total(grand_total)
             return
 
 def get_random_images():
