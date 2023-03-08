@@ -28,21 +28,21 @@ def main():
 def guess_random_number():
     "Determines if users guess was correct"
     random_number = generate_random_number()
-    count = 1
-    keep_guessing = True
-    while keep_guessing is True:
+    guess_dict = {}
+    user_guess = None
+
+    while user_guess != random_number:
         user_guess = get_users_guess()
         if user_guess > random_number:
             print("That number is too high.")
-            count += 1
         elif user_guess < random_number:
             print("That number is too low.")
-            count += 1
-        else:
-            keep_guessing = False
-            print("That's correct!")
-            print(f"Number of guesses: {count}")
-            return
+        guess_dict[user_guess] = guess_dict.get(user_guess,0)+1
+
+    guess_dict[user_guess] = guess_dict.get(user_guess,0)+1
+    print("That's correct!")
+    print(f"Number of guesses: {len(guess_dict)}")
+    return
 
 def generate_random_number():
     "Generates a random number between 0 and 9"
@@ -69,16 +69,14 @@ def get_digit_in_range(prompt: str) -> int:
 
 def ask_to_play_again():
     "Prompts user to enter whether they would like to play again"
-    ask_user = True
-    while ask_user is True:
+    play_again_input = None
+    while False != play_again_input != True:
         play_again_input = input("Would you like to play again? Enter 'YES' or 'NO': ")
         if play_again_input == "YES":
-            ask_user = False
             return True
         if play_again_input == "NO":
-            ask_user = False
             return False
-        print("Error: Invalid character(s) detected.")
+    print("Error: Invalid character(s) detected.")
 
 if __name__=="__main__":
     main()

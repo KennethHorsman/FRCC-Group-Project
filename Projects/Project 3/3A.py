@@ -14,13 +14,10 @@ Course: CSC1019-FBN
 
 def main():
     "Tells user how many inches are in the number of feet"
-    convert_feet_to_inches()
-
-def convert_feet_to_inches():
-    "Calculates feet to inches"
     feet = get_number_feet()
     inches = feet * 12
-    return print(f"{int(feet) if feet.is_integer() else feet} feet is equivalent to {int(inches) if inches.is_integer() else inches} inches.")
+    print(f"{int(feet) if feet.is_integer() else feet} feet is equivalent to {int(inches) if inches.is_integer() else inches} inches.")
+    return
 
 def get_number_feet():
     "Prompts user to input number of feet"
