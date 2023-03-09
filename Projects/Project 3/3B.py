@@ -71,7 +71,7 @@ def ask_to_play_again():
     "Prompts user to enter whether they would like to play again"
     play_again_input = None
     while play_again_input not in (True, False):
-        play_again_input = input("Would you like to play again? Enter 'YES' or 'NO': ")
+        play_again_input = input("Would you like to play again? Enter 'YES' or 'NO': ").upper()
         if play_again_input == "YES":
             return True
         if play_again_input == "NO":
