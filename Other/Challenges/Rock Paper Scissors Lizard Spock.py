@@ -53,11 +53,11 @@ def get_user_choice():
     "Asks for the users hand"
     get_input = True
     while get_input is True:
-        user_input = input("Please enter 'rock', 'paper', 'scissors', 'lizard', or 'spock': ")
-        if user_input.lower() not in ('rock','paper','scissors','lizard','spock'):
+        user_input = input("Please enter 'rock', 'paper', 'scissors', 'lizard', or 'spock': ").lower()
+        if user_input not in ('rock','paper','scissors','lizard','spock'):
             print("Error: Invalid character(s).")
         else:
-            return user_input.lower()
+            return user_input
 
 def ask_to_play_again():
     "Prompts user to enter if they'd like to play again"
@@ -72,3 +72,4 @@ def ask_to_play_again():
 
 if __name__=="__main__":
     main()
+    input('')
