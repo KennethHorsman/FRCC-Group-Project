@@ -54,8 +54,10 @@ def rock_paper_scissors():
 
     if user_hand == losing_hand: # If the user_hand is the value that loses against the program_hand value, user loses
         print(f"{program_hand.title()} beats {user_hand}. You lost!")
-    elif user_hand == winning_hand: # If the user_hand is the value that wins against the program_hand value, user wins
+        return
+    if user_hand == winning_hand: # If the user_hand is the value that wins against the program_hand value, user wins
         print(f"{user_hand.title()} beats {program_hand}. You win!")
+        return
 
 def ask_to_play_again():
     "Prompts user to enter if they'd like to play again"
