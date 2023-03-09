@@ -16,22 +16,6 @@ def main():
         play_again = ask_to_play_again()
     print("Thanks for playing!")
 
-def generate_choice():
-    "Generates the programs hand"
-    choices = ['rock','paper','scissors']
-    return random.choice(choices)
-
-def get_user_choice():
-    "Asks for the users hand"
-    get_input = True
-    while get_input is True:
-        user_input = input("Please enter 'rock', 'paper', or 'scissors': ")
-        if user_input.lower() not in ('rock','paper','scissors'):
-            print("Error: Invalid character(s).")
-        else:
-            get_input = False
-    return user_input.lower()
-
 def rock_paper_scissors():
     "Determines game winner"
     get_hands = True
@@ -58,6 +42,22 @@ def rock_paper_scissors():
     if user_hand == winning_hand: # If the user_hand is the value that wins against the program_hand value, user wins
         print(f"{user_hand.title()} beats {program_hand}. You win!")
         return
+
+def generate_choice():
+    "Generates the programs hand"
+    choices = ['rock','paper','scissors']
+    return random.choice(choices)
+
+def get_user_choice():
+    "Asks for the users hand"
+    get_input = True
+    while get_input is True:
+        user_input = input("Please enter 'rock', 'paper', or 'scissors': ")
+        if user_input.lower() not in ('rock','paper','scissors'):
+            print("Error: Invalid character(s).")
+        else:
+            get_input = False
+    return user_input.lower()
 
 def ask_to_play_again():
     "Prompts user to enter if they'd like to play again"
