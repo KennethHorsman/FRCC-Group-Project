@@ -28,19 +28,19 @@ def rock_paper_scissors():
             print(f"You chose {user_hand}. Computer chose {program_hand}.")
             get_hands = False
 
-    game_rules = {'rock': ['scissors', 'lizard'],
+    game_rules = {'rock': ['scissors', 'lizard'], # each value per key is what will lose to that key
                 'paper': ['spock','rock'],
                 'scissors': ['lizard','paper'],
                 'lizard': ['paper','spock'],
                 'spock': ['rock','scissors']}
 
-    lose_to_program = game_rules[f"{program_hand}"]
-    lose_to_user = game_rules[f"{user_hand}"]
+    lose_to_program = game_rules[f"{program_hand}"] # finds that values that will lose to the programs hand
+    lose_to_user = game_rules[f"{user_hand}"] # finds the values that will lose to the users hand
 
-    if user_hand in lose_to_program: # If the user_hand is one of the value that loses against the program_hand value, user loses
+    if user_hand in lose_to_program: # If the users hand is one of the values that loses against the programs hand, user loses
         print(f"{program_hand.title()} beats {user_hand}. You lost!")
         return
-    if program_hand in lose_to_user: # If the user_hand is one of the value that wins against the program_hand value, user wins
+    if program_hand in lose_to_user: # If the programs hand is one of the values that loses against the users hand, user wins
         print(f"{user_hand.title()} beats {program_hand}. You win!")
         return
 
