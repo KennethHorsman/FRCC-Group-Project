@@ -44,7 +44,7 @@ def slot_machine():
 
         image_dict = {} # Creates an empty dictionary
         for x in images: # Loops through each item in list images
-            image_dict[x] = image_dict.get(x,0)+1 # Creates key in dict as x, assigns value as 0 if not already in dict, and ad1ds 1 for that occurance of the key
+            image_dict[x] = image_dict.get(x,0)+1 # Creates key in dict as x, assigns value as 0 if not already in dict, and adds 1 for that occurance of the key
         num_matches = max(image_dict.values()) # Finds the highest value in the dict, which is the number of matches (occurances) of the key
 
         if num_matches == 3:
@@ -83,12 +83,11 @@ def get_non_negative_number(prompt: str) -> float:
         user_input = input(prompt).strip("$").replace(",","")
         if not is_valid_number(user_input):
             print("Error: Invalid character(s) detected.")
-            continue
-        if float(user_input) < 0:
+        elif float(user_input) < 0:
             print("Error: The amount of money inserted must be a non-negative number.")
-            continue
-        test_number = False
-        return float(user_input)
+        else:
+            test_number = False
+            return float(user_input)
 
 def is_valid_number(num: str) -> bool:
     "Determines if num can successfully be converted to a float"
