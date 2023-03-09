@@ -34,13 +34,13 @@ def rock_paper_scissors():
                 'lizard': ['paper','spock'],
                 'spock': ['rock','scissors']}
 
-    programs_losing_hands = game_rules[f"{program_hand}"]
-    users_losing_hands = game_rules[f"{user_hand}"]
+    lose_to_program = game_rules[f"{program_hand}"]
+    lose_to_user = game_rules[f"{user_hand}"]
 
-    if user_hand in programs_losing_hands: # If the user_hand is one of the value that loses against the program_hand value, user loses
+    if user_hand in lose_to_program: # If the user_hand is one of the value that loses against the program_hand value, user loses
         print(f"{program_hand.title()} beats {user_hand}. You lost!")
         return
-    if program_hand in users_losing_hands: # If the user_hand is one of the value that wins against the program_hand value, user wins
+    if program_hand in lose_to_user: # If the user_hand is one of the value that wins against the program_hand value, user wins
         print(f"{user_hand.title()} beats {program_hand}. You win!")
         return
 
