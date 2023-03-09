@@ -28,24 +28,19 @@ def rock_paper_scissors():
             print(f"You chose {user_hand}. Computer chose {program_hand}.")
             get_hands = False
 
-    winner_list = ['rock', 'paper', 'scissors', 'lizard', 'spock'] # Sets up parallel arrays. The value on top beats the corresponding value below.
-    loser_list1 = ['scissors','spock','lizard','paper','rock']
-    loser_list2 = ['lizard','rock','paper','spock','scissors']
+    game_rules = {'rock': ['scissors', 'lizard'],
+                'paper': ['spock','rock'],
+                'scissors': ['lizard','paper'],
+                'lizard': ['paper','spock'],
+                'spock': ['rock','scissors']}
 
-    winner_index = winner_list.index(program_hand) # Finds the index of the program's hand on the top list
-    loser_index1 = loser_list1.index(program_hand) # Finds the index of the programs hand if it were a losing value
-    loser_index2 = loser_list2.index(program_hand) # Finds second losing value
+    programs_losing_hands = game_rules[f"{program_hand}"]
+    users_losing_hands = game_rules[f"{user_hand}"]
 
-    winning_hand1 = winner_list[loser_index1] # Sets one winning_hand as whichever value would win against the value of program_hand on the first losing list
-    winning_hand2 = winner_list[loser_index2] # Finds the second winning hand
-
-    losing_hand1 = loser_list1[winner_index] # Sets one losing_hand as whichever value would lose against the value of program_hand on the top list
-    losing_hand2 = loser_list2[winner_index] # Finds the second losing hand
-
-    if user_hand in (losing_hand1, losing_hand2): # If the user_hand is one of the value that loses against the program_hand value, user loses
+    if user_hand in programs_losing_hands: # If the user_hand is one of the value that loses against the program_hand value, user loses
         print(f"{program_hand.title()} beats {user_hand}. You lost!")
         return
-    if user_hand in (winning_hand1, winning_hand2): # If the user_hand is one of the value that wins against the program_hand value, user wins
+    if program_hand in users_losing_hands: # If the user_hand is one of the value that wins against the program_hand value, user wins
         print(f"{user_hand.title()} beats {program_hand}. You win!")
         return
 
