@@ -10,15 +10,25 @@ import random
 
 def main():
     "Plays Rock Paper Scissors with the user"
+    total_wins = 0
+    total_losses = 0
     play_again = True
+
     while play_again is True:
-        rock_paper_scissors()
+        win, loss = rock_paper_scissors()
         play_again = ask_to_play_again()
+        total_wins += win
+        total_losses += loss
+
+    print(f"Total Wins: {total_wins}\nTotal Losses: {total_losses}")
     print("Thanks for playing!")
 
 def rock_paper_scissors():
     "Determines game winner"
+    win = 0
+    loss = 0
     get_hands = True
+
     while get_hands is True:
         program_hand = generate_choice()
         user_hand = get_user_choice()
@@ -39,10 +49,12 @@ def rock_paper_scissors():
 
     if user_hand in lose_to_program: # If the users hand is one of the values that loses against the programs hand, user loses
         print(f"{program_hand.title()} beats {user_hand}. You lost!")
-        return
+        loss += 1
+        return win, loss
     if program_hand in lose_to_user: # If the programs hand is one of the values that loses against the users hand, user wins
         print(f"{user_hand.title()} beats {program_hand}. You win!")
-        return
+        win += 1
+        return win, loss
 
 def generate_choice():
     "Generates the programs hand"
