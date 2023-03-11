@@ -30,4 +30,3 @@ while age != QUIT:
     # Ask the user to enter the next child's age
     age = int(input("Enter the age of the child or 99 to quit: "))
 
-
