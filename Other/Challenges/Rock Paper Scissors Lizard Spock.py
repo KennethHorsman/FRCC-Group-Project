@@ -16,15 +16,15 @@ def main():
     print("Welcome to Rock-Paper-Scissors-Lizard-Spock!")
     match_length = get_match_length()
     if match_length > 0:
-        while total_wins < 3 and total_losses < 3:
+        while total_wins < match_length and total_losses < match_length:
             if did_user_win_rpsls() is True:
                 total_wins += 1
             else:
                 total_losses += 1
-        if total_wins == 3:
-            print("You were the first to three rounds won. You win the game!")
-        if total_losses == 3:
-            print("The computer was the first to three rounds won. You lose the game!")
+        if total_wins == match_length:
+            print(f"You were the first to {match_length} round{'s' if match_length > 1 else ''} won. You win the game!")
+        if total_losses == match_length:
+            print(f"The computer was the first to {match_length} round{'s' if match_length > 1 else ''} won. You lose the game!")
 
     else:
         while play_again is True:
@@ -39,16 +39,22 @@ def main():
 
 def get_match_length():
     "Determines if match is indefinite or until a certain number of wins"
-    match_length = 0.0
+    match_length = 0
     get_length = True
 
     while get_length is True:
         length_input = input("To play indefinitely, type \"A\". To play until a certain number of wins, type \"B\": ")
         if length_input == "A":
+            match_length = 0
             get_length = False
         elif length_input == "B":
-            while not match_length.is_integer() or match_length == 0:
-                match_length = float(input("Please enter the number of wins that will end the game: "))
+            while match_length < 1:
+                match_length = input("Please enter the number of wins that will end the game: ")
+                if not match_length.isnumeric():
+                    match_length = 0
+                    print("Error: Invalid character(s) detected.")
+                else:
+                    match_length = int(match_length)
             get_length = False
         else:
             print("Error: Invalid character(s) detected.")
