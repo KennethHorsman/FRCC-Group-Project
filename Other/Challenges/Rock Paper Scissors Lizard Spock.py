@@ -1,9 +1,8 @@
 #pylint: disable=invalid-name
 #pylint: disable=line-too-long
+#pylint: disable=inconsistent-return-statements
 """
-Rock, Paper, Scissors game - 
-Take in a user input for rock, paper, or scissors and have code that runs the 
-user input vs a randomly generated rock, paper, or scissors to see if the user wins or the computer wins.
+From Big Bang Theory: Rock Paper Scissors, but with two added variables: Lizard and Spock!
 """
 
 import random
@@ -14,19 +13,70 @@ def main():
     total_losses = 0
     play_again = True
 
-    while play_again is True:
-        win, loss = rock_paper_scissors()
-        play_again = ask_to_play_again()
-        total_wins += win
-        total_losses += loss
+    print("Welcome to Rock-Paper-Scissors-Lizard-Spock!")
+    match_length = get_match_length()
+    if match_length > 0:
+        while total_wins < 3 and total_losses < 3:
+            if did_user_win_rpsls() is True:
+                total_wins += 1
+            else:
+                total_losses += 1
+        if total_wins == 3:
+            print("You were the first to three rounds won. You win the game!")
+        if total_losses == 3:
+            print("The computer was the first to three rounds won. You lose the game!")
 
-    print(f"Total Wins: {total_wins}\nTotal Losses: {total_losses}")
+    else:
+        while play_again is True:
+            if did_user_win_rpsls() is True:
+                total_wins += 1
+            else:
+                total_losses += 1
+            play_again = ask_to_play_again()
+        print(f"Total Wins: {total_wins}\nTotal Losses: {total_losses}")
+
     print("Thanks for playing!")
 
-def rock_paper_scissors():
-    "Determines game winner"
-    win = 0
-    loss = 0
+def get_match_length():
+    "Determines if match is indefinite or until a certain number of wins"
+    match_length = 0.0
+    get_length = True
+
+    while get_length is True:
+        length_input = input("To play indefinitely, type \"A\". To play until a certain number of wins, type \"B\": ")
+        if length_input == "A":
+            get_length = False
+        elif length_input == "B":
+            while not match_length.is_integer() or match_length == 0:
+                match_length = float(input("Please enter the number of wins that will end the game: "))
+            get_length = False
+        else:
+            print("Error: Invalid character(s) detected.")
+
+    return match_length
+
+def did_user_win_rpsls():
+    "Determines if the user was the winner or loser in rock-paper-scissors-lizard-spock"
+    user_hand, program_hand = compare_hands()
+
+    game_rules = {'rock': ['scissors', 'lizard'],
+                'paper': ['spock','rock'],
+                'scissors': ['lizard','paper'],
+                'lizard': ['paper','spock'],
+                'spock': ['rock','scissors']}
+
+    lose_to_program = game_rules[program_hand]
+    lose_to_user = game_rules[user_hand]
+
+    if program_hand in lose_to_user:
+        print(f"{user_hand.title()} beats {program_hand}. You win that round!")
+        return True
+    if user_hand in lose_to_program:
+        print(f"{program_hand.title()} beats {user_hand}. You lost that round!")
+        return False
+
+def compare_hands():
+    "Compares computer vs users hands"
     get_hands = True
 
     while get_hands is True:
@@ -37,24 +87,7 @@ def rock_paper_scissors():
         else:
             print(f"You chose {user_hand}. Computer chose {program_hand}.")
             get_hands = False
-
-    game_rules = {'rock': ['scissors', 'lizard'], # each value per key is what will lose to that key
-                'paper': ['spock','rock'],
-                'scissors': ['lizard','paper'],
-                'lizard': ['paper','spock'],
-                'spock': ['rock','scissors']}
-
-    lose_to_program = game_rules[f"{program_hand}"] # finds that values that will lose to the programs hand
-    lose_to_user = game_rules[f"{user_hand}"] # finds the values that will lose to the users hand
-
-    if user_hand in lose_to_program: # If the users hand is one of the values that loses against the programs hand, user loses
-        print(f"{program_hand.title()} beats {user_hand}. You lost!")
-        loss += 1
-        return win, loss
-    if program_hand in lose_to_user: # If the programs hand is one of the values that loses against the users hand, user wins
-        print(f"{user_hand.title()} beats {program_hand}. You win!")
-        win += 1
-        return win, loss
+            return user_hand, program_hand
 
 def generate_choice():
     "Generates the programs hand"
