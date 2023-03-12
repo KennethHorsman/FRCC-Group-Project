@@ -69,7 +69,7 @@ def did_user_win_rpsls():
     lose_to_user = game_rules[user_hand]
 
     if program_hand in lose_to_user:
-        print(f"{user_hand.title()} beats {program_hand}. You win that round!")
+        print(f"{user_hand.title()} beats {program_hand}. You won that round!")
         return True
     if user_hand in lose_to_program:
         print(f"{program_hand.title()} beats {user_hand}. You lost that round!")
