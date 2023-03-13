@@ -44,7 +44,7 @@ def get_match_length():
     get_length = True
 
     while get_length is True:
-        length_input = input("To play indefinitely, type \"A\". To play until a certain number of wins, type \"B\": ")
+        length_input = input("To play indefinitely, type \"A\". To play until a certain number of wins, type \"B\": ").upper()
         if length_input == "A":
             get_length = False
         elif length_input == "B":
