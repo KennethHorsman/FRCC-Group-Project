@@ -46,13 +46,11 @@ def get_match_length():
     while get_length is True:
         length_input = input("To play indefinitely, type \"A\". To play until a certain number of wins, type \"B\": ")
         if length_input == "A":
-            match_length = 0
             get_length = False
         elif length_input == "B":
             while match_length < 1:
                 num_wins_input = input("Please enter the number of wins that will end the game: ")
                 if not num_wins_input.isnumeric():
-                    match_length = 0
                     print("Error: Invalid character(s) detected.")
                 else:
                     match_length = int(num_wins_input)
