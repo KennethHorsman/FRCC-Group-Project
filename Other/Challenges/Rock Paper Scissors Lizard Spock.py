@@ -15,6 +15,7 @@ def main():
 
     print("Welcome to Rock-Paper-Scissors-Lizard-Spock!")
     match_length = get_match_length()
+    
     if match_length > 0:
         while total_wins < match_length and total_losses < match_length:
             if did_user_win_rpsls() is True:
@@ -49,12 +50,12 @@ def get_match_length():
             get_length = False
         elif length_input == "B":
             while match_length < 1:
-                match_length = input("Please enter the number of wins that will end the game: ")
-                if not match_length.isnumeric():
+                num_wins_input = input("Please enter the number of wins that will end the game: ")
+                if not num_wins_input.isnumeric():
                     match_length = 0
                     print("Error: Invalid character(s) detected.")
                 else:
-                    match_length = int(match_length)
+                    match_length = int(num_wins_input)
             get_length = False
         else:
             print("Error: Invalid character(s) detected.")
